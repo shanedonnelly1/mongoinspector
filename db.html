@@ -1,0 +1,29 @@
+<template name="dbs">
+	{{#if isCollectionSet}}
+		{{> singleCollection}}
+	{{else}}
+		<h1>Collections for current application</h1>
+		{{> db}}	
+	{{/if}}
+</template>
+
+<template name="db">
+	{{#with db}}
+	<ol>
+		{{#each collections}}
+		{{> collection}}
+		{{/each}}
+	</ol>
+	{{/with}}
+</template>
+
+<template name="collection">
+		<li><a href="/dbs/{{name}}">{{name}}</a> - {{getCollectionCount collection}} docs.</li>
+</template>
+
+<template name="singleCollection">
+	<h1>Single collection - {{collectionName}}</h1>
+	<div class="codify">
+	{{{renderCollection collection}}}
+	</div>
+</template>

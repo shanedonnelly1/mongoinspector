@@ -1,0 +1,52 @@
+<head>
+  <title>mongoinspecttest</title>
+</head>
+
+<body>
+  {{> navigation}}
+
+  {{#if isRoute "home"}}
+    {{> home}}
+  {{/if}}
+  {{#if isRoute "dbs"}}
+    {{> dbs}}
+  {{/if}}    
+</body>
+
+<template name="home">
+  {{> lists_container}}
+</template>
+
+<template name="navigation">
+  <div id="navigation">
+    <a href="/">Home</a>
+    <a href="/dbs">DBs</a>
+  </div>
+</template>
+
+<template name="lists_container">
+	<h2>Friends</h2>
+	<ol>
+		{{#each friends}}
+		<li>{{category}}		
+			{{> list_container}}
+		</li>			
+		{{/each}}
+	</ol>
+	<h2>Enemies</h2>	
+	<ol>
+		{{#each enemies}}
+		<li>{{category}}		
+			{{> list_container}}
+		</li>			
+		{{/each}}
+	</ol>
+</template>
+
+<template name="list_container">
+			<ol>
+			{{#each people}}
+				<li>{{name}}</li>
+			{{/each}}
+			</ol>
+</template>
